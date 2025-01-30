@@ -6,6 +6,8 @@ This guide provides step-by-step instructions for setting up and running a Sprin
 - Ubuntu operating system
 - Internet connection
 
+
+
 ## Instructions
 
 1. **Update apt package index:**

@@ -1,0 +1,30 @@
+pipeline {
+    
+
+agent any
+    stages{
+        stage('pull'){
+
+            
+            steps{
+                git branch: 'main', url: 'https://github.com/mayurmwagh/B5-B16-B14-combine-backend.git'
+            }
+        }
+        stage('build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh '''
+                docker build . -t mayurwagh/combine-backend51416:latest
+                docker push mayurwagh/combine-backend51416:latest
+                docker rmi mayurwagh/combine-backend51416:latest
+                kubectl apply -f ./yaml/
+                '''
+                
+            }
+        }
+    }
+}
